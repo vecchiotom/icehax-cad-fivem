@@ -1,0 +1,17 @@
+{
+  "name": "fle-cad",
+  "main": "server.js",
+  "dependencies": {
+    "9gag-scraper": "^1.0.1",
+    "bcrypt": "1.0.2",
+    "body-parser": "1.15.1",
+    "connect-redis": "3.0.2",
+    "express": "4.13.4",
+    "express-handlebars": "3.0.0",
+    "express-session": "1.13.0",
+    "mongodb": "^2.2.31",
+    "nodemailer": "^4.1.1",
+    "passport": "0.3.2",
+    "passport-local": "1.0.0"
+  }
+}
