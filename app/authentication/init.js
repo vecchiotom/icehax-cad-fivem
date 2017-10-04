@@ -16,24 +16,6 @@ var url = "mongodb://icehax:tommaso.celano01@ds159344.mlab.com:59344/flecad";
 
 
 
-function findUser (username, callback) {
- 
-
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  db.collection("customers").find().sort({username:username}, function(error, result) { 
-    if (err) throw err;
-    console.log(result);
-    user= result
-    if (!result.length) {
-       return callback(null)
-    } else if (result.length = 1) {
-      return callback(null, user[0])
-    }
-    db.close();
-  });
-});
-
 
 
 
@@ -41,7 +23,7 @@ MongoClient.connect(url, function(err, db) {
 
 
  
-}
+
 
 passport.serializeUser(function (user, done) {
   console.log(user.id)
@@ -87,8 +69,10 @@ function initPassport () {
             return done(err)
           }
           if (!isValid) {
+	    console.log('password is invalid')
             return done(null, false)
           }
+	  console.log('password is valid!!')
           return done(null, user)
         })
     console.log(user);
