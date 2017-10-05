@@ -18,6 +18,9 @@ function initUser (app) {
   app.get('/status', passport.authenticationMiddleware(), status)
   app.get('/callsign', passport.authenticationMiddleware(), callsign)
   app.post('/admin', passport.authenticationMiddleware(), admin)
+  app.get('/addpolicerecord', passport.authenticationMiddleware(), addpolicerecord)
+  app.get('/criminals', passport.authenticationMiddleware(), criminals)
+  app.get('/searchid', passport.authenticationMiddleware(), searchcriminals)
 
 
 }
@@ -25,6 +28,9 @@ function initUser (app) {
 
 function renderWelcome (req, res) {
   res.render('../views/login')
+}
+function criminals (req, res) {
+  res.render('../views/criminals')
 }
 
 function renderProfile (req, res) {
@@ -37,7 +43,7 @@ function renderProfile (req, res) {
 
 }
 function renderDisp (req, res) {
-
+if (req.user.department == "disp"){
   MongoClient.connect(url, function(err, db) {
   if (err) throw err;
    db.collection("user").find({}).toArray(function(err, result) { 
@@ -63,6 +69,11 @@ function renderDisp (req, res) {
     db.close();
   
   });
+} else {
+
+  res.send("i'm sorry but you're not a dispatcher, go back to the <a href= '/'>Homepage</a>")
+
+}
  
 }
 
@@ -125,7 +136,9 @@ function renderPol (req, res) {
     imgs: imgs
 
   })
-    } 
+    } else {
+      res.send("civilians can't access the police menu.")
+    }
     db.close();
   });
 });
@@ -175,5 +188,58 @@ function admin(req,res){
     res.send('WTF BRO WHY DO YA WANT TO HACK ME, IT IS NOT FUNNY! btw, i got your ip ;)' + req.headers['x-forwarded-for'] || req.connection.remoteAddress )
   }
   
+}
+function searchcriminals(req, res){
+
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  db.collection("user").find({username: req.query.username }).toArray(function(err, result) {
+    var tables = ""
+    if (err) throw err;
+
+    for (var i = 0; i < result.length; i++) {
+      tables = tables + "<tr><td>"+ result[i].username +"</td><td>"+ result[i].discord +"</td><td>"+ result[i].policerecords.split(" | ").length +"</td></tr>"
+    }
+      res.render('../views/searchid', {
+  
+    table: tables
+
+  })
+      tables =""
+
+    db.close();
+  });
+});
+
+
+
+}
+function addpolicerecord(req, response){
+  var policerecords
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  db.collection("user").findOne({username: req.query.username}, function(err, result) {
+    if (err) throw err;
+    if(result.policerecords){
+
+      policerecords = result.policerecords
+    } else if (!result.policerecords){
+      policerecords = ""
+    }
+
+    var newvalues = { $set: { policerecords: policerecords + " | " + req.query.record } };
+
+  db.collection("user").updateOne({username: req.query.username}, newvalues, function(err, res) {
+    if (err) throw err;
+    console.log("1 record inserted");
+response.redirect('/criminals');
+    db.close();
+  });
+    
+  });
+  
+});
+
 }
 module.exports = initUser
