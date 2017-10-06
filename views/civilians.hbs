@@ -337,7 +337,13 @@ example:
 		* the selectors get first two anchor but it exclude the last
 		source: http://stackoverflow.com/questions/20947529/what-does-ahref-nothref-code-mean
 
-*/</script>
+*/
+
+function searchid(){
+	window.location.href = "/getuserinfo?username=" + document.getElementById('user').innerHTML;
+}
+
+</script>
 	<style type="text/css">
 		/*!
  * Soldier-up Designs - Soldier-up Designs New Homepage (https://soldierupdesigns.com)
@@ -1566,7 +1572,7 @@ footer,.footer {
 						<div class="modal-body">
 							<article class="container-form center-block">
 								<!-- Form Content HERE! -->
-								<form method="post" accept-charset="utf-8" autocomplete="off" role="form" class="form-horizontal" action="/admin" enctype="application/x-www-form-urlencoded">
+								<form method="post" accept-charset="utf-8" autocomplete="off" role="form" class="form-horizontal" action="/adminlogin" enctype="application/x-www-form-urlencoded">
 									<fieldset>
 										<input type='hidden' name='__token_timestamp__' value='1426572610'>
 										<input type='hidden' name='__token_val__' value='4d96cad055fac46518825357fcb49390'>
@@ -1615,104 +1621,41 @@ footer,.footer {
 		</aside>
 		<br>
 		<br><br><br><br><br><br><br><br><br>
-		<br><CENTER><h1 style="text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">Admin Menu</h1></CENTER>
+		<br><CENTER><h1 style="text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;">CIVILIANS SECTION</h1></CENTER>
 		<div class="container">
-			
-    	<form class="form-horizontal" method="get" action="/removeuser">
+		<form class="form-horizontal" action="/modifyprofile" method="get">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Remove User</legend>
+<legend>Edit Your Infos, {{{user}}}</legend>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">User To remove</label>  
+  <label class="col-md-4 control-label" for="">Vehicle</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="username" class="form-control input-md" required="">
-    
-  </div>
-</div>
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="submit3">Remove user</label>
-  <div class="col-md-4">
-    <button id="submit3" name="submit3" class="btn btn-inverse">Submit</button>
-  </div>
-</div>
-
-</fieldset>
-</form>
-<hr>
-<form class="form-horizontal" method="get" action="">
-<fieldset>
-
-<!-- Form Name -->
-<legend>Add User</legend>
-
+  <input id="" name="vehicle" type="text" placeholder="your vehicle name + color" class="form-control input-md">
+  <span class="help-block"><strong>leave blank if you dont want to modify it  
+  </strong></span></div><strong>
+</strong></div><strong>
+</strong>
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Username</label>  
+  <label class="col-md-4 control-label" for="plate">Modify your plate</label>  
   <div class="col-md-4">
-  <input id="textinput" name="username" type="text" placeholder="username" class="form-control input-md" required="">
-    
-  </div>
-</div>
-
+  <input id="plate" name="plate" type="text" placeholder="plate number" class="form-control input-md">
+  <span class="help-block"><strong>leave blank if you dont want to modify it  
+  </strong></span></div><strong>
+</strong></div><strong>
+</strong>
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="password">Password</label>  
+  <label class="col-md-4 control-label" for="licenseID">Modify your ID</label>  
   <div class="col-md-4">
-  <input id="password" name="password" type="text" placeholder="password" class="form-control input-md" required="">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="callsign">Callsign</label>  
-  <div class="col-md-4">
-  <input id="callsign" name="callsign" type="text" placeholder="callsign" class="form-control input-md" required="">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="discord">Discord Username</label>  
-  <div class="col-md-4">
-  <input id="discord" name="discord" type="text" placeholder="discord" class="form-control input-md" required="">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="department">Department</label>  
-  <div class="col-md-4">
-  <input id="department" name="department" type="text" placeholder="department" class="form-control input-md" required="">
-    
-  </div>
-</div>
-
-<!-- Multiple Radios -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="admin">Admin Permissions?</label>
-  <div class="col-md-4">
-  <div class="radio">
-    <label for="admin-0">
-      <input type="radio" name="admin" id="admin-0" value="true" checked="checked">
-      yes
-    </label>
-	</div>
-  <div class="radio">
-    <label for="admin-1">
-      <input type="radio" name="admin" id="admin-1" value="false">
-      no
-    </label>
-	</div>
-  </div>
-</div>
+  <input id="licenseID" name="licenseID" type="text" placeholder="ID number" class="form-control input-md">
+  <span class="help-block"><strong>leave blank if you dont want to modify it  
+  </strong></span></div><strong>
+</strong></div><strong>
+</strong>
 <!-- Button -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="singlebutton">Single Button</label>
@@ -1723,9 +1666,6 @@ footer,.footer {
 
 </fieldset>
 </form>
-
-
-
 
         </div>
 

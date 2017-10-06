@@ -21,6 +21,13 @@ function initUser (app) {
   app.get('/addpolicerecord', passport.authenticationMiddleware(), addpolicerecord)
   app.get('/criminals', passport.authenticationMiddleware(), criminals)
   app.get('/searchid', passport.authenticationMiddleware(), searchcriminals)
+  app.get('/getuserinfo', passport.authenticationMiddleware(), getuserinfo)
+  app.get('/civilians', passport.authenticationMiddleware(), civilians)
+  app.get('/modifyprofile', passport.authenticationMiddleware(), modifyprofile)
+
+
+
+
 
 
 }
@@ -190,6 +197,7 @@ function admin(req,res){
   
 }
 function searchcriminals(req, res){
+  if (req.user.department != "civilian"){
 
 
 MongoClient.connect(url, function(err, db) {
@@ -199,7 +207,7 @@ MongoClient.connect(url, function(err, db) {
     if (err) throw err;
 
     for (var i = 0; i < result.length; i++) {
-      tables = tables + "<tr><td>"+ result[i].username +"</td><td>"+ result[i].discord +"</td><td>"+ result[i].policerecords.split(" | ").length +"</td></tr>"
+      tables = tables + "<tr><td id='user'>"+ result[i].username +"</td><td>"+ result[i].discord +"</td><td>"+ result[i].policerecords.split(" | ").length +"</td><td><input type='button' onclick='searchid()' value='Get User's infos></td></tr>"
     }
       res.render('../views/searchid', {
   
@@ -211,7 +219,7 @@ MongoClient.connect(url, function(err, db) {
     db.close();
   });
 });
-
+} else {res.send('403-forbidden')}
 
 
 }
@@ -241,5 +249,68 @@ response.redirect('/criminals');
   
 });
 
+}
+function getuserinfo(req, res){
+  if (req.user.department != "civilian"){
+MongoClient.connect(url, function(err, db) {
+ db.collection("user").findOne({username: req.query.username}, function(err, result) {
+var records = result.policerecords.split(' | ')
+var recordstext = ""
+for (var i = 0; i < records.length; i++) {
+  if (records[i] ==""){
+
+  } else if (records != "") {
+
+
+    recordstext = recordstext + ", " + records[i]
+
+  } else if (!records){
+    recordstext = "<strong>NO FILES ON RECORD</strong>"
+
+
+  }
+
+
+
+  
+}
+
+res.render('../views/getuserinfo', {
+  
+    username: result.username,
+    id: result.licenseID,
+    status: result.status,
+    vehicle: result.vehicle,
+    records: recordstext,
+    discord: result.discord,
+    plate: result.plate
+
+
+  })
+
+
+ })
+
+})
+} else {res.send('403 - forbidden')}
+}
+function modifyprofile(req, res) {
+  MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var newvalues = { $set: req.query };;
+  db.collection("user").updateOne(req.user, newvalues, function(err, resu) {
+    if (err) throw err;
+    console.log("1 user updated");
+    res.redirect('/civilians')
+    db.close();
+  });
+});
+}
+function civilians(req, res) {
+  res.render('../views/civilians', {
+  
+    user: req.body.username
+
+  })
 }
 module.exports = initUser

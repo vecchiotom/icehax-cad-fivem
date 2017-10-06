@@ -337,7 +337,13 @@ example:
 		* the selectors get first two anchor but it exclude the last
 		source: http://stackoverflow.com/questions/20947529/what-does-ahref-nothref-code-mean
 
-*/</script>
+*/
+
+function searchid(){
+	window.location.href = "/getuserinfo?username=" + document.getElementById('user').innerHTML;
+}
+
+</script>
 	<style type="text/css">
 		/*!
  * Soldier-up Designs - Soldier-up Designs New Homepage (https://soldierupdesigns.com)
@@ -1529,23 +1535,26 @@ footer,.footer {
 					<a href="#top">C.A.D. <strong>Menu</strong></a>
 				</li>
 				<li>
-					<a href="/" title="Go to Top">Home</a>
+					<a href="/" title="Go to Home">Home</a>
 				</li>
 				<li>
-					<a href="/about" title="Go to About Us section">Criminal Database</a>
+					<a href="/criminals" title="Go to About Us section">Criminal Database</a>
 				</li>
 				<li>
-					<a href="/resume" title="Navigate to Jonathan Adcox IT Resume">Dispatcher Menu</a>
+					<a href="/dispatchersmenu" title="Navigate to Jonathan Adcox IT Resume">Dispatcher Menu</a>
 				</li>
 				<li>
-					<a href="/portfolio" title="Navigate to 'Our Services' section">Police Officers</a>
+					<a href="/police" title="Navigate to 'Our Services' section">Police Officers</a>
 				</li>
 				<!-- Future Development
 				<li>
 					<a href="#portfolio">Portfolio</a>
 				</li> -->
 				<li>
-					<a href="/blog" title="Our Blog">Run Plate and ID</a>
+					<a href="/criminals" title="Our Blog">Run Plate and ID</a>
+				</li>
+				<li>
+					<a href="/civilians" title="Our Blog">Civilians Menu</a>
 				</li>
 				<li>
 					<a data-toggle="modal" data-href="#loginModal" data-target="#loginModal" style="cursor:pointer;"> Admin Login</a>
