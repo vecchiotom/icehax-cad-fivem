@@ -14,7 +14,7 @@ var user
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://icehax:tommaso.celano01@ds159344.mlab.com:59344/flecad";
 
-
+var ObjectId = require('mongodb').ObjectID;
 
 
 
@@ -26,14 +26,14 @@ var url = "mongodb://icehax:tommaso.celano01@ds159344.mlab.com:59344/flecad";
 
 
 passport.serializeUser(function (user, done) {
-  console.log(user.id)
-  done(null, user.id); 
+  console.log(user._id.toString())
+  done(null, user._id.toString()); 
 })
 
 passport.deserializeUser(function (username, done) {
     MongoClient.connect(url, function(err, db) {
   if (err) throw err;
-  db.collection("user").findOne({id:username}, function(err, user) {
+  db.collection("user").findOne({_id: new ObjectId(username)}, function(err, user) {
     if (err) throw err;
     done(null, user);
     db.close();

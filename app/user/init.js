@@ -1,10 +1,14 @@
 const passport = require('passport')
+const bcrypt = require('bcrypt')
+const salt = bcrypt.genSaltSync(10)
+
 var html = ""
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://icehax:tommaso.celano01@ds159344.mlab.com:59344/flecad";
 var user = {}
 var img= ""
 var imgs=""
+var lastid
 
 function initUser (app) {
   app.get('/', renderWelcome)
@@ -24,6 +28,37 @@ function initUser (app) {
   app.get('/getuserinfo', passport.authenticationMiddleware(), getuserinfo)
   app.get('/civilians', passport.authenticationMiddleware(), civilians)
   app.get('/modifyprofile', passport.authenticationMiddleware(), modifyprofile)
+    app.post('/signup', function(req, res){
+      MongoClient.connect(url, function(err, db) {
+  if (err) res.send(err);
+
+
+db.collection("user").findOne({username: req.body.username}, function(err, result) {
+    if (err) throw err;
+if (result) {
+
+res.send('username already taken')
+
+}else{
+      var myobj = { username: req.body.username, password: bcrypt.hashSync(req.body.password, salt), id: 95, department:"civilian", status:"OFFLINE", callsign:"", admin:false,  discord: "to be set" };
+
+db.collection("user").insertOne(myobj, function(err, result) {
+    if (err) res.send(err);
+    console.log("1 document inserted");
+    db.close();
+    res.redirect('/')
+  });
+
+}    
+  });
+
+      var myobj = { username: req.body.username, password: bcrypt.hashSync(req.body.password, salt), id: 95, department:"civilian", status:"OFFLINE", callsign:"", admin:false,  discord: "to be set" };
+
+ 
+});
+
+    });
+  app.get('/register', signup)
 
 
 
@@ -52,9 +87,9 @@ function renderProfile (req, res) {
 function renderDisp (req, res) {
 if (req.user.department == "disp"){
   MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
+  if (err) res.send(err);
    db.collection("user").find({}).toArray(function(err, result) { 
-    if (err) throw err;
+    if (err) res.send(err);
     console.log(result);
     for (var i = 0; i < result.length; i++) {
       if (result[i].status == "OFFLINE"){
@@ -87,9 +122,9 @@ if (req.user.department == "disp"){
 function renderPol (req, res) {
 
   MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
+  if (err) res.send(err);
   db.collection("user").findOne({username: req.user.username}, function(err, result) {
-    if (err) throw err;
+    if (err) res.send(err);
     console.log(result)
     if (result.department == "usaf"){
       img='<img src = "https://upload.wikimedia.org/wikipedia/commons/6/69/USAF_logo.png" class="media-object" style="width:60px">'
@@ -155,10 +190,10 @@ function renderPol (req, res) {
 function status(req, res){
   var newvalues = { $set: { status: req.query.status } };
   MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
+  if (err) res.send(err);
   var newvalues = { $set: { status: req.query.status } };
   db.collection("user").updateOne(req.user, newvalues, function(err, res) {
-    if (err) throw err;
+    if (err) res.send(err);
     console.log("1 document updated");
     db.close();
   });
@@ -169,14 +204,14 @@ function status(req, res){
 function callsign(req, res){
   
   MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
+  if (err) res.send(err);
   if (req.query.heavy){
   var newvalues2 = { $set: { callsign: req.query.callsign + " " + req.query.heavy } };
 } else if (!req.query.heavy){
   var newvalues2 = { $set: { callsign: req.query.callsign } };
 }
   db.collection("user").updateOne(req.user, newvalues2, function(err, res) {
-    if (err) throw err;
+    if (err) res.send(err);
     console.log("1 document updated");
     db.close();
   });
@@ -201,10 +236,10 @@ function searchcriminals(req, res){
 
 
 MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
+  if (err) res.send(err);
   db.collection("user").find({username: req.query.username }).toArray(function(err, result) {
     var tables = ""
-    if (err) throw err;
+    if (err) res.send(err);
 
     for (var i = 0; i < result.length; i++) {
       tables = tables + "<tr><td id='user'>"+ result[i].username +"</td><td>"+ result[i].discord +"</td><td>"+ result[i].policerecords.split(" | ").length +"</td><td><input type='button' onclick='searchid()' value='Get User's infos></td></tr>"
@@ -226,9 +261,9 @@ MongoClient.connect(url, function(err, db) {
 function addpolicerecord(req, response){
   var policerecords
 MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
+  if (err) res.send(err);
   db.collection("user").findOne({username: req.query.username}, function(err, result) {
-    if (err) throw err;
+    if (err) res.send(err);
     if(result.policerecords){
 
       policerecords = result.policerecords
@@ -239,7 +274,7 @@ MongoClient.connect(url, function(err, db) {
     var newvalues = { $set: { policerecords: policerecords + " | " + req.query.record } };
 
   db.collection("user").updateOne({username: req.query.username}, newvalues, function(err, res) {
-    if (err) throw err;
+    if (err) res.send(err);
     console.log("1 record inserted");
 response.redirect('/criminals');
     db.close();
@@ -296,10 +331,10 @@ res.render('../views/getuserinfo', {
 }
 function modifyprofile(req, res) {
   MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
+  if (err) res.send(err);
   var newvalues = { $set: req.query };;
   db.collection("user").updateOne(req.user, newvalues, function(err, resu) {
-    if (err) throw err;
+    if (err) res.send(err);
     console.log("1 user updated");
     res.redirect('/civilians')
     db.close();
@@ -312,5 +347,9 @@ function civilians(req, res) {
     user: req.body.username
 
   })
+}
+
+function signup(req, res) {
+  res.render('../views/signup')
 }
 module.exports = initUser
