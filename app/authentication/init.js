@@ -12,7 +12,7 @@ const passwordHash = bcrypt.hashSync(myPlaintextPassword, salt)
 
 var user
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://icehax:tommaso.celano01@ds159344.mlab.com:59344/flecad";
+var url = "mongodb://XXX:XXX@XXX.XXX:XXX/XXX";
 
 var ObjectId = require('mongodb').ObjectID;
 
