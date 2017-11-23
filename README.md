@@ -174,18 +174,25 @@ Admin Login
 
 **Home**
 the home page
+
 **Criminal Database**
 Only officers have access to this, basically the place you go when you want to search up a civilian.
+
 **Dispatcher Menu**
 Only dispatch has access to this, it lets you see online cops and their status
+
 **Police Officers**
 Only officers have access to this, There they can set everything regarding their profile, for military rp servers, i've also included a "Append Heavy to CallSign" feature
+
 **Run Plate And ID**
 It redirects to the same page as Criminal Database
+
 **Civilians Menu** 
 Everyone has access to this, you can set your id number, plate vehicle and much more.
+
 **Admin Login**
 WIP, SEE BELOW ON HOW TO APPROVE POLICE OFFICERS, EDIT USERS ETC...
+
 
 
 ### How To edit a user and How Does the users system work?
