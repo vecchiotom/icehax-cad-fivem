@@ -1,7 +1,7 @@
 const config = {}
 
 config.MongoStore = {
-  secret: "yoursecret"
+  secret: "yoursecret",
   url: "your mongodb auth url"
 }
 
