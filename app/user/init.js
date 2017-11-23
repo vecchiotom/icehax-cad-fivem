@@ -1,7 +1,7 @@
 const passport = require('passport')
 const bcrypt = require('bcrypt')
 const salt = bcrypt.genSaltSync(10)
-const config = require('.../config')
+const config = require('../../config')
 
 var html = ""
 var MongoClient = require('mongodb').MongoClient;
