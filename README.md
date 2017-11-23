@@ -124,3 +124,21 @@ most of the text is stored in the HBS files, but other text is stored in the **A
 ###### Pre-requirements
 - Node.js([Download](https://nodejs.org/) or use ```sudo apt-get install nodejs```)
 - MongoDB Server ([Free hosting](https://mlab.com/) or [Download Server](https://www.mongodb.com/) or use ```sudo apt-get install mongodb```)
+###### Installing the dependecies:
+- Open up the Terminal
+- CD to the folder where you downloaded the CAD
+- enter "```npm install```"
+- wait for it to install all the dependecies
+###### Starting The CAD
+- on he same terminal window where you've just installed the dependecies, type ```node index.js```
+- on the console should appear a message stating the server is listening on port 3000(default port)
+- To test it out, Open a Web Browser and browse to: http://localhost:3000 if the server is a vps, browse to http://theipofyourserver:3000
+
+
+
+
+
+## Features Overview
+
+#### Main page
+![alt text](https://i.imgur.com/E6nO1Oz.jpg)
