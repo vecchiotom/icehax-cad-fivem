@@ -120,6 +120,12 @@ once you've installed and started your mongodb, create the following collections
 
 - "user" collection
 - "sessions" collection
+
+and after that, you have to go in **both, app/user/init.js and app/authentication/init.js** and edit the var that says: 
+
+```var url = "mongodb://xxx:xxx@xxx.xxx:xxx/xxx";```
+
+to your **MONGODB AUTHENTICATION URL**
 ###### Starting The CAD
 - on he same CMD where you've just installed the dependecies, type ```node index.js```
 - on the console should appear a message stating the server is listening on port 3000(default port)
@@ -139,6 +145,12 @@ once you've installed and started your mongod, create the following collections:
 
 - "user" collection
 - "sessions" collection
+
+and after that, you have to go in **both, app/user/init.js and app/authentication/init.js** and edit the var that says: 
+
+```var url = "mongodb://xxx:xxx@xxx.xxx:xxx/xxx";```
+
+to your **MONGODB AUTHENTICATION URL**
 ###### Starting The CAD
 - on he same terminal window where you've just installed the dependecies, type ```node index.js```
 - on the console should appear a message stating the server is listening on port 3000(default port)
