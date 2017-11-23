@@ -178,8 +178,22 @@ function renderPol (req, res) {
     callsign: req.user.callsign,
     imgs: imgs
 
+  }) }
+    else if (result.department == "ems"){
+      img='<img src = "https://upload.wikimedia.org/wikipedia/en/thumb/b/bc/MiamiDadeCountyFireDepartmentLogo.JPG/220px-MiamiDadeCountyFireDepartmentLogo.JPG" class="media-object" style="width:60px">'
+      imgs = '<div class="panel-body" style="background-image:url(http://www.usfirepolice.net/fl_florida/fl_miami_dade_incident_command_post-1.jpg);background-position: 50% 50%;  background-size: cover;">'
+      res.render('../views/police',{
+    username: req.user.username,
+    img:img,
+    discord: req.user.discord,
+    status: req.user.status,
+    department: 'Miami-Dade Fire Rescue',
+    callsign: req.user.callsign,
+    imgs: imgs
+
   })
-    } else {
+    }
+      else {
       res.send("civilians can't access the police menu.")
     }
     db.close();
