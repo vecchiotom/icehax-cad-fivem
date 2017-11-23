@@ -5,7 +5,6 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const passport = require('passport')
 const session = require('express-session')
-const RedisStore = require('connect-redis')(session)
 const MongoStore = require('connect-mongo')(session);
 const config = require('../config')
 const app = express()
@@ -21,7 +20,7 @@ app.use(session({
     url: "mongodb://icehax:tommaso.celano01@ds159344.mlab.com:59344/flecad",
     collection: 'sessions'
   }),
-  secret: config.redisStore.secret,
+  secret: config.MongoStore.secret,
   resave: false,
   saveUninitialized: false
 }))
