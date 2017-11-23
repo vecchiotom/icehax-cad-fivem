@@ -1,10 +1,11 @@
 const passport = require('passport')
 const bcrypt = require('bcrypt')
 const salt = bcrypt.genSaltSync(10)
+const config = require('.../config')
 
 var html = ""
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://XXX:XXX@XXX.XXX:XXX/XXX";
+var url = config.MongoStore.url;
 var user = {}
 var img= ""
 var imgs=""
