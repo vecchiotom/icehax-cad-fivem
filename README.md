@@ -108,8 +108,8 @@ most of the text is stored in the HBS files, but other text is stored in the **A
 #### Windows
 
 ###### Pre-requirements
-- Node.js([Download] {https://nodejs.org/})
--MongoDB Server ([Free hosting]{https://mlab.com/} or [Download Server] {https://www.mongodb.com/})
+- Node.js([Download](https://nodejs.org/))
+-MongoDB Server ([Free hosting](https://mlab.com/) or [Download Server](https://www.mongodb.com/))
 ###### Installing the dependecies:
 1- Open up the CMD
 2- CD to the folder where you downloaded the CAD
