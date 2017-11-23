@@ -1,18 +1,14 @@
 const passport = require('passport')
 const bcrypt = require('bcrypt')
 const LocalStrategy = require('passport-local').Strategy
+const config = require('.../config'
 
 const authenticationMiddleware = require('./middleware')
 
-// Generate Password
-const saltRounds = 10
-const myPlaintextPassword = 'my-password'
-const salt = bcrypt.genSaltSync(saltRounds)
-const passwordHash = bcrypt.hashSync(myPlaintextPassword, salt)
 
 var user
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://XXX:XXX@XXX.XXX:XXX/XXX";
+var url = config.MongoStore.url;
 
 var ObjectId = require('mongodb').ObjectID;
 
