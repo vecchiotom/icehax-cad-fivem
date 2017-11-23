@@ -149,3 +149,57 @@ This, Is The main page of the C.A.D. Let's now take a look at the features and e
 [watch this video](https://i.gyazo.com/92fff03e9eb9810299f4f18ac8467fc0.mp4)
 
 The Background, Has a slideshow! pretty nice Huh? :)
+
+![alt text](https://cdn.discordapp.com/attachments/329962830834958336/383282463696224276/image.png)
+
+These Two buttons link to my community's discord and to my github profile
+
+![alt text](https://cdn.discordapp.com/attachments/329962830834958336/383282853523226625/image.png)
+
+This Button is a WORK IN PROGRESS, It doesnt work yet.
+
+![alt-text](https://cdn.discordapp.com/attachments/329962830834958336/383283182369505282/image.png)
+this is what you wanna look at to browse in the CAD
+
+The menu is composed by the following sections:
+
+Home
+Criminal Database
+Dispatcher Menu
+Police Officers
+Run Plate and ID
+Civilians Menu
+Admin Login
+
+
+**Home**
+the home page
+**Criminal Database**
+Only officers have access to this, basically the place you go when you want to search up a civilian.
+**Dispatcher Menu**
+Only dispatch has access to this, it lets you see online cops and their status
+**Police Officers**
+Only officers have access to this, There they can set everything regarding their profile, for military rp servers, i've also included a "Append Heavy to CallSign" feature
+**Run Plate And ID**
+It redirects to the same page as Criminal Database
+**Civilians Menu** 
+Everyone has access to this, you can set your id number, plate vehicle and much more.
+**Admin Login**
+WIP, SEE BELOW ON HOW TO APPROVE POLICE OFFICERS, EDIT USERS ETC...
+
+
+### How To edit a user and How Does the users system work?
+
+Let's answer this question:
+
+- all the users are stored in the MongoDB Database
+
+To edit them, do the following:
+- connect to your mongodb using a client [Recommended](https://robomongo.org/)
+- go in the user Collection
+- right click on a user and edit the document
+- to set the user as a police officer, set his "department" field as: **pd** for Police Dept or **sheriff** For Sheriff's office or **hwy** For Highway Patrol or **disp** for Dispatcher or **ems** for Fire Rescue.
+- To set anything else, i've made all the other fields pretty self explanatory, but ask me on Fivem's Forum if you have any doubts.
+
+
+# THANK YOU FOR USING MY CAD! AND REMEMBER THAT THIS IS AN ALPHA, SO MANY NEW FEATURES WILL BE ADDED IN THE FUTURE!!!
