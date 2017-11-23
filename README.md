@@ -116,7 +116,7 @@ most of the text is stored in the HBS files, but other text is stored in the **A
 - enter "```npm install```"
 - wait for it to install all the dependencies
 ###### Setting Up MONGODB
-once you've installed and started your mongod, create the following collections:
+once you've installed and started your mongodb, create the following collections:
 
 - "user" collection
 - "sessions" collection
@@ -217,6 +217,12 @@ To edit them, do the following:
 - right click on a user and edit the document
 - to set the user as a police officer, set his "department" field as: **pd** for Police Dept or **sheriff** For Sheriff's office or **hwy** For Highway Patrol or **disp** for Dispatcher or **ems** for Fire Rescue.
 - To set anything else, i've made all the other fields pretty self explanatory, but ask me on Fivem's Forum if you have any doubts.
+### Registering new users
 
+The registration page exists, put it's not listed anywhere in the cad.
+
+this is because it's meant to be given to the users by you. the link will be:
+
+http://yourdomainorip:yourport/signup
 
 # THANK YOU FOR USING MY CAD! AND REMEMBER THAT THIS IS AN ALPHA, SO MANY NEW FEATURES WILL BE ADDED IN THE FUTURE!!!
