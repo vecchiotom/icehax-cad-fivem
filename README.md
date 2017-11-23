@@ -142,3 +142,10 @@ most of the text is stored in the HBS files, but other text is stored in the **A
 
 #### Main page
 ![alt text](https://i.imgur.com/E6nO1Oz.jpg)
+
+
+This, Is The main page of the C.A.D. Let's now take a look at the features and everything that is on this page:
+
+![alt text](https://i.gyazo.com/92fff03e9eb9810299f4f18ac8467fc0.mp4)
+
+The Background, Has a slideshow! pretty nice Huh? :)
