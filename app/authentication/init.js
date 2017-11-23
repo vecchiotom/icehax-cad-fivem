@@ -1,7 +1,7 @@
 const passport = require('passport')
 const bcrypt = require('bcrypt')
 const LocalStrategy = require('passport-local').Strategy
-const config = require('.../config'
+const config = require('.../config')
 
 const authenticationMiddleware = require('./middleware')
 
