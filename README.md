@@ -55,7 +55,9 @@ Hello folks! This is a fully ready-to-go C.A.D./M.D.T. system for anyone who wan
 ```
 
 
+## Restyling the CAD to match your server's Theme
 
+##### Images
 There are two places where the images are placed:
 
 1- under App/User/init.js
@@ -63,7 +65,7 @@ There are two places where the images are placed:
 
 *let's see how to change the backgrounds*
 
-1- To change the images in the **first place i mentioned** you have to edit that file. you will find scrolling, this:
+1- To change the images in the **first place i mentioned** you have to edit the init.js file. in there you will find scrolling, this:
 ```
 if (result.department == "usaf"){
       img='<img src = "https://upload.wikimedia.org/wikipedia/commons/6/69/USAF_logo.png" class="media-object" style="width:60px">'
@@ -89,4 +91,26 @@ i'm sure you can notice there are **2 links to two images in there** every copy 
 *NOTE THAT ALL OF THOSE LINKS, WILL REPLACE THE IMAGES THAT EVERY DEPT WILL BE ABLE TO SEE WHEN THEY GO ON THEIR PROFILE PAGE.*
 
 
-**TO MODIFY THE IMAGES ON THE WHOLE SITE, JUST GO IN THE HBS FILES AND REPLACE ALL THE LINKS TO IMAGES THERE WITH YOUR PREFERRED ONES.**
+2- **the second place where images are placed, is the Views folder** to edit those images, which are:
+
+- all the backgrounds
+- all the img tags in the html
+
+You need to know at least the basics of HTML and CSS.
+these images are located all over **ALL OF THE .HBS FILES** those files are normal html files, with the exception that the server can give them some infos  to display. all the infos that will be displayed are marked with **"{{{something}}}"**
+##### The Text
+changing the text is relatively simple, again you need to know the basis of html, but it's not a hard work to do.
+
+most of the text is stored in the HBS files, but other text is stored in the **App/User/init.js** file. the text in there is more precisely everything reguarding the departments names.
+
+## Setting up and starting the CAD
+
+#### Windows
+
+###### Pre-requirements
+- Node.js([Download]{https://nodejs.org/})
+-MongoDB Server ([Free hosting]{https://mlab.com/} or [Download Server]{https://www.mongodb.com/})
+###### Installing the dependecies:
+1- Open up the CMD
+2- CD to the folder where you downloaded the CAD
+3- enter "```npm install```"
