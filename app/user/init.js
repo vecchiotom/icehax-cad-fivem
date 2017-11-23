@@ -4,7 +4,7 @@ const salt = bcrypt.genSaltSync(10)
 
 var html = ""
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://icehax:tommaso.celano01@ds159344.mlab.com:59344/flecad";
+var url = "mongodb://XXX:XXX@XXX.XXX:XXX/XXX";
 var user = {}
 var img= ""
 var imgs=""
