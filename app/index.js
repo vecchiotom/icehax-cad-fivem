@@ -17,7 +17,7 @@ require('./authentication').init(app)
 
 app.use(session({
   store: new MongoStore({
-    url: config.MongoStore.url",
+    url: config.MongoStore.url,
     collection: 'sessions'
   }),
   secret: config.MongoStore.secret,
