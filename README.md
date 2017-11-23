@@ -114,7 +114,12 @@ most of the text is stored in the HBS files, but other text is stored in the **A
 - Open up the CMD
 - CD to the folder where you downloaded the CAD
 - enter "```npm install```"
-- wait for it to install all the dependecies
+- wait for it to install all the dependencies
+###### Setting Up MONGODB
+once you've installed and started your mongod, create the following collections:
+
+- "user" collection
+- "sessions" collection
 ###### Starting The CAD
 - on he same CMD where you've just installed the dependecies, type ```node index.js```
 - on the console should appear a message stating the server is listening on port 3000(default port)
@@ -129,6 +134,11 @@ most of the text is stored in the HBS files, but other text is stored in the **A
 - CD to the folder where you downloaded the CAD
 - enter "```npm install```"
 - wait for it to install all the dependecies
+###### Setting Up MONGODB
+once you've installed and started your mongod, create the following collections:
+
+- "user" collection
+- "sessions" collection
 ###### Starting The CAD
 - on he same terminal window where you've just installed the dependecies, type ```node index.js```
 - on the console should appear a message stating the server is listening on port 3000(default port)
