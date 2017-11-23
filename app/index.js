@@ -17,7 +17,7 @@ require('./authentication').init(app)
 
 app.use(session({
   store: new MongoStore({
-    url: "mongodb://icehax:tommaso.celano01@ds159344.mlab.com:59344/flecad",
+    url: config.MongoStore.url",
     collection: 'sessions'
   }),
   secret: config.MongoStore.secret,
