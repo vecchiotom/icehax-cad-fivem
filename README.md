@@ -229,6 +229,6 @@ The registration page exists, put it's not listed anywhere in the cad.
 
 this is because it's meant to be given to the users by you. the link will be:
 
-http://yourdomainorip:yourport/signup
+http://yourdomainorip:yourport/register
 
 # THANK YOU FOR USING MY CAD! AND REMEMBER THAT THIS IS AN ALPHA, SO MANY NEW FEATURES WILL BE ADDED IN THE FUTURE!!!
