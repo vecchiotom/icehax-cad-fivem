@@ -41,7 +41,7 @@ if (result) {
 res.send('username already taken')
 
 }else{
-      var myobj = { username: req.body.username, password: bcrypt.hashSync(req.body.password, salt), id: 95, department:"civilian", status:"OFFLINE", callsign:"", admin:false,  discord: "to be set" };
+      var myobj = { username: req.body.username, password: bcrypt.hashSync(req.body.password, salt), id: 95, department:"civilian", status:"OFFLINE", callsign:"", admin:false,  discord: "to be set", policerecords: "", plate:"",licenseID:"", vehicle:""};
 
 db.collection("user").insertOne(myobj, function(err, result) {
     if (err) res.send(err);
@@ -53,8 +53,7 @@ db.collection("user").insertOne(myobj, function(err, result) {
 }    
   });
 
-      var myobj = { username: req.body.username, password: bcrypt.hashSync(req.body.password, salt), id: 95, department:"civilian", status:"OFFLINE", callsign:"", admin:false,  discord: "to be set" };
-
+var myobj = { username: req.body.username, password: bcrypt.hashSync(req.body.password, salt), id: 95, department:"civilian", status:"OFFLINE", callsign:"", admin:false,  discord: "to be set", policerecords: "", plate:"",licenseID:"", vehicle:""};
  
 });
 
@@ -257,7 +256,8 @@ MongoClient.connect(url, function(err, db) {
     if (err) res.send(err);
 
     for (var i = 0; i < result.length; i++) {
-      tables = tables + "<tr><td id='user'>"+ result[i].username +"</td><td>"+ result[i].discord +"</td><td>"+ result[i].policerecords.split(" | ").length +"</td><td><input type='button' onclick='searchid()' value='Get User's infos></td></tr>"
+      var recnum = result[i].policerecords.split(" | ").length - 1
+      tables = tables + "<tr><td id='user'>"+ result[i].username +"</td><td>"+ result[i].discord +"</td><td>"+ recnum +"</td><td><input type='button' onclick='searchid()' value='Get User's infos></td></tr>"
     }
       res.render('../views/searchid', {
   
