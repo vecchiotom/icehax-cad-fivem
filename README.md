@@ -21,7 +21,7 @@ Hello folks! This is a fully ready-to-go C.A.D./M.D.T. system for anyone who wan
 |       |-- profile.hbs
 |       `-- welcome.hbs
 |-- config
-|   `-- index.js \\ do not care about this
+|   `-- index.js \\ main config file
 |-- css \\ bootstrap css files
 |   |-- bootstrap-grid.css
 |   |-- bootstrap-grid.css.map
