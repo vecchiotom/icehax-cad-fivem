@@ -35,7 +35,7 @@ function initUser (app) {
 
 
 db.collection("user").findOne({username: req.body.username}, function(err, result) {
-    if (err) throw err;
+    if (err) res.send(err);
 if (result) {
 
 res.send('username already taken')
@@ -76,10 +76,16 @@ function criminals (req, res) {
 }
 
 function renderProfile (req, res) {
-  user={ username: req.body.username }
+  
   res.render('../views/index', {
   
-    user: req.body.username
+    user: req.user.username,
+    text1: config.text.maintextone,
+    text2: config.text.maintexttwo,
+    text3: config.text.maintextthree,
+    back1: config.text.mainbackgroundone,
+    back2: config.text.mainbackgroundtwo,
+    back3: config.text.mainbackgroundthree
 
   })
 
@@ -140,53 +146,53 @@ function renderPol (req, res) {
 
   })
     } else if (result.department == "hwy"){
-      img='<img src = "https://www.flhsmv.gov/wp-content/uploads/fhppatch-298x300.jpg" class="media-object" style="width:60px">'
-      imgs = '<div class="panel-body" style="background-image:url(https://c1.staticflickr.com/9/8343/8211766763_00fd1e0780_b.jpg);background-position: 50% 75%;  background-size: cover;">'
+      img='<img src = "'+config.text.highwaylogo+'" class="media-object" style="width:60px">'
+      imgs = '<div class="panel-body" style="background-image:url('+config.text.highwaybackground+');background-position: 50% 75%;  background-size: cover;">'
       res.render('../views/police',{
     username: req.user.username,
     img:img,
     discord: req.user.discord,
     status: req.user.status,
-    department: "Florida Highway Patrol",
+    department: config.text.highway,
     callsign: req.user.callsign,
     imgs: imgs
 
   })
     } else if (result.department == "sheriff"){
-      img='<img src = "https://media.glassdoor.com/sqll/208868/broward-county-sheriff-florida-squarelogo.png" class="media-object" style="width:60px">'
-      imgs = '<div class="panel-body" style="background-image:url(https://c1.staticflickr.com/9/8752/16267173064_53a49b472b_b.jpg);background-position: 50% 50%;  background-size: cover;">'
+      img='<img src = "'+config.text.sherifflogo+'" class="media-object" style="width:60px">'
+      imgs = '<div class="panel-body" style="background-image:url('+config.text.sheriffbackground+');background-position: 50% 50%;  background-size: cover;">'
       res.render('../views/police',{
     username: req.user.username,
     img:img,
     discord: req.user.discord,
     status: req.user.status,
-    department: 'Broward County Sheriff Department',
+    department: config.text.sheriff,
     callsign: req.user.callsign,
     imgs: imgs
 
   })
     } else if (result.department == "pd"){
-      img='<img src = "http://imageserv11.team-logic.com/store-logic/products/222/6/8/9/5/6320.jpg" class="media-object" style="width:60px">'
-      imgs = '<div class="panel-body" style="background-image:url(https://farm8.static.flickr.com/7020/6811891475_e064b439a8_b.jpg);background-position: 50% 50%;  background-size: cover;">'
+      img='<img src = "'+config.text.pdlogo+'" class="media-object" style="width:60px">'
+      imgs = '<div class="panel-body" style="background-image:url('+config.text.pdbackground+');background-position: 50% 50%;  background-size: cover;">'
       res.render('../views/police',{
     username: req.user.username,
     img:img,
     discord: req.user.discord,
     status: req.user.status,
-    department: 'Miami-Dade Police Department',
+    department: config.text.pd,
     callsign: req.user.callsign,
     imgs: imgs
 
   }) }
     else if (result.department == "ems"){
-      img='<img src = "https://upload.wikimedia.org/wikipedia/en/thumb/b/bc/MiamiDadeCountyFireDepartmentLogo.JPG/220px-MiamiDadeCountyFireDepartmentLogo.JPG" class="media-object" style="width:60px">'
-      imgs = '<div class="panel-body" style="background-image:url(http://www.usfirepolice.net/fl_florida/fl_miami_dade_incident_command_post-1.jpg);background-position: 50% 50%;  background-size: cover;">'
+      img='<img src = "'+config.text.emslogo+'" class="media-object" style="width:60px">'
+      imgs = '<div class="panel-body" style="background-image:url('+config.text.emsbackground+');background-position: 50% 50%;  background-size: cover;">'
       res.render('../views/police',{
     username: req.user.username,
     img:img,
     discord: req.user.discord,
     status: req.user.status,
-    department: 'Miami-Dade Fire Rescue',
+    department: config.text.ems,
     callsign: req.user.callsign,
     imgs: imgs
 
