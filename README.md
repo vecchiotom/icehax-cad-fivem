@@ -56,59 +56,15 @@ Hello folks! This is a fully ready-to-go C.A.D./M.D.T. system for anyone who wan
 
 
 ## Restyling the CAD to match your server's Theme
-
-##### Images
-There are two places where the images are placed:
-
-1- under App/User/init.js
-2- under Views, in all the .hbs files.
-
-*let's see how to change the backgrounds*
-
-1- To change the images in the **first place i mentioned** you have to edit the init.js file. in there you will find scrolling, this:
-```
-if (result.department == "usaf"){
-      img='<img src = "https://upload.wikimedia.org/wikipedia/commons/6/69/USAF_logo.png" class="media-object" style="width:60px">'
-      imgs = '<div class="panel-body" style="background-image:url(http://eskipaper.com/images/usaf-wallpaper-2.jpg);background-position: center; background-size: cover;">'
-      res.render('../views/police',{
-    username: req.user.username,
-    img:img,
-    discord: req.user.discord,
-    status: req.user.status,
-    department: "United States Air Force",
-    callsign: req.user.callsign,
-    imgs: imgs
-
-  })
-```
-repeated multiple times.
-
-i'm sure you can notice there are **2 links to two images in there** every copy of that snippet of code has those links, to edit  the images, to match your departments, just change the links to:
-
-**the first link will be the LOGO OF THE DEPARTMENT**
-**the second, THE BACKGROUND FOR THAT DEPARTMENT.**
-
-*NOTE THAT ALL OF THOSE LINKS, WILL REPLACE THE IMAGES THAT EVERY DEPT WILL BE ABLE TO SEE WHEN THEY GO ON THEIR PROFILE PAGE.*
-
-
-2- **the second place where images are placed, is the Views folder** to edit those images, which are:
-
-- all the backgrounds
-- all the img tags in the html
-
-You need to know at least the basics of HTML and CSS.
-these images are located all over **ALL OF THE .HBS FILES** those files are normal html files, with the exception that the server can give them some infos  to display. all the infos that will be displayed are marked with **"{{{something}}}"**
-##### The Text
-changing the text is relatively simple, again you need to know the basis of html, but it's not a hard work to do.
-
-most of the text is stored in the HBS files, but other text is stored in the **App/User/init.js** file. the text in there is more precisely everything reguarding the departments names.
-
+Well, it was pretty difficult to restyle it, wasn't it? with v0.0.4, no more headaches trying to restyle it, everything can be set in the config files!!!
 ## Setting up and starting the CAD
+**complete setup tutorial**
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/GIz83FnkWmA/0.jpg)](https://www.youtube.com/watch?v=GIz83FnkWmA)
 
 #### Windows
 
 ###### Pre-requirements
-- Node.js([Download](https://nodejs.org/))
+- Node.js([Download](https://nodejs.org/)) **version 8.9.1 or older**
 - MongoDB Server ([Free hosting](https://mlab.com/) or [Download Server](https://www.mongodb.com/))
 ###### Installing the dependecies:
 - Open up the CMD
@@ -130,7 +86,7 @@ once you've installed and started your mongodb, create the following collections
 
 #### Linux
 ###### Pre-requirements
-- Node.js([Download](https://nodejs.org/) or use ```sudo apt-get install nodejs```)
+- Node.js([Download](https://nodejs.org/) or use ```sudo apt-get install nodejs```) **version 8.9.1 or older**
 - MongoDB Server ([Free hosting](https://mlab.com/) or [Download Server](https://www.mongodb.com/) or use ```sudo apt-get install mongodb```)
 ###### Installing the dependecies:
 - Open up the Terminal
