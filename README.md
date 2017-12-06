@@ -59,6 +59,8 @@ Hello folks! This is a fully ready-to-go C.A.D./M.D.T. system for anyone who wan
 Well, it was pretty difficult to restyle it, wasn't it? with v0.0.4, no more headaches trying to restyle it, everything can be set in the config files!!!
 ## Setting up and starting the CAD
 **complete setup tutorial**
+
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/GIz83FnkWmA/0.jpg)](https://www.youtube.com/watch?v=GIz83FnkWmA)
 
 #### Windows
